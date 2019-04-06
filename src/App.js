@@ -1,64 +1,21 @@
 import React, { Component } from "react";
-import Plot from "react-plotly.js";
-import "./App.css";
+import Scatter from "./Scatter";
 
 class App extends Component {
-  getrandom = (num, mul) => {
-    const value = [];
-    for (let i = 0; i <= num; i++) {
-      const rand = Math.random() * mul;
-      value.push(rand);
-    }
-    return value;
-  };
   render() {
     return (
-      <Plot
-        data={[
-          {
-            r: this.getrandom(62, 3),
-            t: this.getrandom(62, 250),
-            mode: "markers",
-            name: "Trial 5",
-            marker: {
-              color: "rgb(0,0,0)",
-              size: 10,
-              line: { color: "red" },
-              opacity: 1
-            },
-            type: "scatterpolar",
-            subplot: "polar"
-          },
-          {
-            r: this.getrandom(62, 3),
-            t: this.getrandom(62, 250),
-            mode: "markers",
-            name: "Trial 6",
-            marker: {
-              color: "rgb(255,0,0)",
-              size: 10,
-              line: { color: "red" },
-              opacity: 1
-            },
-            type: "scatterpolar",
-            subplot: "polar"
-          }
-        ]}
-        layout={{
-          polar: {
-            sector: [45, 90],
-            domain: {
-              x: [0, 0.4],
-              y: [0, 1]
-            }
-          },
-          showlegend: false,
-          title: "Hobbs-Pearson Trials",
-          font: { size: 15 },
-          plot_bgcolor: "rgb(223, 223, 223)",
-          angularaxis: { tickcolor: "rgb(253,253,253)" }
-        }}
-      />
+      <React.Fragment>
+        <h1>Introspection Radar (Singapore)</h1>
+        <Scatter sector={[0, 360]} />
+        <Scatter sector={[0, 45]} />
+        <Scatter sector={[45, 90]} />
+        <Scatter sector={[90, 135]} />
+        <Scatter sector={[135, 180]} />
+        <Scatter sector={[180, 225]} />
+        <Scatter sector={[225, 270]} />
+        <Scatter sector={[270, 315]} />
+        <Scatter sector={[315, 360]} />
+      </React.Fragment>
     );
   }
 }
