@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Plot from "react-plotly.js";
 import { findOne, findAllExcept } from "./static/info";
-
 import _ from "lodash";
 
 class Scatter extends Component {
@@ -14,7 +13,8 @@ class Scatter extends Component {
       searchField: "Nellie Melba",
       radiusOne: [],
       thetaOne: [],
-      namesOne: []
+      namesOne: [],
+      isGridOn: true
     };
   }
 
@@ -89,10 +89,14 @@ class Scatter extends Component {
     await this.renderOthers();
     await this.renderOne();
   };
+  toggleGrid = async () => {
+    await this.setState({ isGridOn: !this.state.isGridOn });
+  };
 
   render() {
     return (
       <React.Fragment>
+        <input type="button" value="toggle grid" onClick={this.toggleGrid} />
         <div>
           <span> Who are you? </span>
           <input
@@ -162,13 +166,10 @@ class Scatter extends Component {
             }
           ]}
           layout={{
-            xaxis: { fixedrange: true },
-            yaxis: { fixedrange: true },
             paper_bgcolor: "rgba(0,0,0,0)",
             plot_bgcolor: "rgba(0,0,0,0)",
             width: 800,
             height: 800,
-
             images: [
               {
                 source: `img/${this.props.background}.png`,
@@ -184,14 +185,13 @@ class Scatter extends Component {
               }
             ],
             showlegend: false,
-
             polar: {
               sector: this.props.sector,
               opacity: 1,
               layer: "below",
               radialaxis: {
                 dragmode: false,
-                visible: false,
+                visible: this.state.isGridOn,
                 tickfont: {
                   size: 8
                 },
@@ -199,7 +199,7 @@ class Scatter extends Component {
               },
               angularaxis: {
                 dragmode: false,
-                visible: false,
+                visible: this.state.isGridOn,
                 tickfont: {
                   size: 8
                 }

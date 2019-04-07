@@ -10,8 +10,8 @@ class ReligiousMinorities extends Component {
     return (
       <Scatter
         sector={[45, 90]}
-        background={"45-90"}
-        bgposition={[0.2, 4.04, 5.1]}
+        background={"45-90-nocolor-annote"}
+        bgposition={[0.455, 1.025, 1.03]}
       />
     );
   }

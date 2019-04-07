@@ -39,7 +39,7 @@ const data = [
       { category: category[4], level: 1, action: 4, name: "Anna Pavlova" },
       { category: category[5], level: 4, action: 4, name: "Anna Pavlova" },
       { category: category[6], level: 2, action: 4, name: "Anna Pavlova" },
-      { category: category[7], level: 1, action: 4, name: "Anna Pavlova" }
+      { category: category[7], level: 3, action: 4, name: "Anna Pavlova" }
     ]
   },
   {

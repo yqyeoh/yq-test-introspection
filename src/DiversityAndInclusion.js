@@ -10,8 +10,8 @@ class DiversityAndInclusion extends Component {
     return (
       <Scatter
         sector={[0, 45]}
-        background={"0-45"}
-        bgposition={[0.495, 0.87, 1.03]}
+        background={"0-45-nocolor-annote"}
+        bgposition={[0.51, 0.775, 1.03]}
       />
     );
   }
