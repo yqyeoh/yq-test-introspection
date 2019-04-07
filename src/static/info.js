@@ -11,18 +11,83 @@ const category = [
 
 const data = [
   {
-    name: "John Doe",
+    time: Date.now(),
+    name: "John Dory",
+    email: "jd@thoughtworks.com",
+    office: "Singapore",
     categories: [
-      { category: category[0], level: 1, action: 4 },
-      { category: category[1], level: 3, action: 4 },
-      { category: category[2], level: 2, action: 4 },
-      { category: category[3], level: 2, action: 4 },
-      { category: category[4], level: 1, action: 4 },
-      { category: category[5], level: 2, action: 4 },
-      { category: category[6], level: 3, action: 4 },
-      { category: category[7], level: 2, action: 4 }
+      { category: category[0], level: 4, action: 4, name: "John Dory" },
+      { category: category[1], level: 3, action: 4, name: "John Dory" },
+      { category: category[2], level: 2, action: 4, name: "John Dory" },
+      { category: category[3], level: 2, action: 4, name: "John Dory" },
+      { category: category[4], level: 1, action: 4, name: "John Dory" },
+      { category: category[5], level: 2, action: 4, name: "John Dory" },
+      { category: category[6], level: 4, action: 4, name: "John Dory" },
+      { category: category[7], level: 2, action: 4, name: "John Dory" }
+    ]
+  },
+  {
+    time: Date.now(),
+    name: "Anna Pavlova",
+    email: "ap@thoughtworks.com",
+    office: "Singapore",
+    categories: [
+      { category: category[0], level: 1, action: 4, name: "Anna Pavlova" },
+      { category: category[1], level: 4, action: 4, name: "Anna Pavlova" },
+      { category: category[2], level: 4, action: 4, name: "Anna Pavlova" },
+      { category: category[3], level: 4, action: 4, name: "Anna Pavlova" },
+      { category: category[4], level: 1, action: 4, name: "Anna Pavlova" },
+      { category: category[5], level: 4, action: 4, name: "Anna Pavlova" },
+      { category: category[6], level: 2, action: 4, name: "Anna Pavlova" },
+      { category: category[7], level: 1, action: 4, name: "Anna Pavlova" }
+    ]
+  },
+  {
+    time: Date.now(),
+    name: "Nellie Melba",
+    email: "nb@thoughtworks.com",
+    office: "Singapore",
+    categories: [
+      { category: category[0], level: 1, action: 4, name: "Nellie Melba" },
+      { category: category[1], level: 2, action: 4, name: "Nellie Melba" },
+      { category: category[2], level: 3, action: 4, name: "Nellie Melba" },
+      { category: category[3], level: 4, action: 4, name: "Nellie Melba" },
+      { category: category[4], level: 2, action: 4, name: "Nellie Melba" },
+      { category: category[5], level: 3, action: 4, name: "Nellie Melba" },
+      { category: category[6], level: 3, action: 4, name: "Nellie Melba" },
+      { category: category[7], level: 4, action: 4, name: "Nellie Melba" }
+    ]
+  },
+  {
+    time: Date.now(),
+    name: "James Salisbury",
+    email: "js@thoughtworks.com",
+    office: "Singapore",
+    categories: [
+      { category: category[0], level: 4, action: 4, name: "James Salisbury" },
+      { category: category[1], level: 1, action: 4, name: "James Salisbury" },
+      { category: category[2], level: 2, action: 4, name: "James Salisbury" },
+      { category: category[3], level: 3, action: 4, name: "James Salisbury" },
+      { category: category[4], level: 4, action: 4, name: "James Salisbury" },
+      { category: category[5], level: 1, action: 4, name: "James Salisbury" },
+      { category: category[6], level: 4, action: 4, name: "James Salisbury" },
+      { category: category[7], level: 1, action: 4, name: "James Salisbury" }
     ]
   }
 ];
 
+const findOne = tarName => {
+  const oneDatum = data.find(a => a.name === tarName);
+  return [oneDatum];
+};
+
+const findAllExcept = tarName => {
+  const oneDatum = data.find(a => a.name === tarName);
+  const index = data.indexOf(oneDatum);
+  const copy = data.slice();
+  copy.splice(index, 1);
+  return copy;
+};
+
+export { findOne, findAllExcept };
 export default data;
