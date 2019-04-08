@@ -1,11 +1,10 @@
 import React from "react";
-import { Jumbotron } from "reactstrap";
+import HPJumbotron from "./../HPJumbotron";
 
 function HomePage() {
   return (
     <div>
-      HomePage
-      <Jumbotron />
+      <HPJumbotron />
     </div>
   );
 }

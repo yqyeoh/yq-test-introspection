@@ -1,36 +1,31 @@
 import React from "react";
-import { Navbar, Nav, NavItem } from "reactstrap";
+import { Nav, NavItem } from "reactstrap";
 import { NavLink as Link } from "react-router-dom";
 
 function NavBar() {
   return (
-    <Navbar
-      style={{ backgroundColor: "#c3eee7" }}
-      expand="md"
-      className="pr-5 pl-5 ">
-      <Nav className="mr-auto d-flex flex-row" navbar>
-        <NavItem className="mr-5">
+    <div style={{ backgroundColor: "#c3eee7" }} className="pt-4 pb-2">
+      <Nav className="d-flex flex-row justify-content-around" navbar>
+        <NavItem>
           <Link to="/home">
-            <h3 className="text-muted">About Introspection</h3>
+            <h4 className="text-muted">About Introspection</h4>
           </Link>
         </NavItem>
-        <NavItem className="mr-5">
+        <NavItem>
           <Link to="/radar">
-            <h3 className="text-muted">Introspection Radar</h3>
+            <h4 className="text-muted">Introspection Radar</h4>
           </Link>
         </NavItem>
-        <NavItem className="mr-5">
+        <NavItem>
           <Link to="/plan">
-            <h3 className="text-muted">Action Plan</h3>
+            <h4 className="text-muted">Action Plan</h4>
           </Link>
         </NavItem>
-        <NavItem className="mr-5">
+        <NavItem>
           <Link to="/admin">
-            <h3 className="text-muted">Admin Panel</h3>
+            <h4 className="text-muted">Admin Panel</h4>
           </Link>
         </NavItem>
-      </Nav>
-      <Nav className="ml-auto" navbar>
         <NavItem>
           <Link to="/profile">
             <img
@@ -44,7 +39,7 @@ function NavBar() {
           </Link>
         </NavItem>
       </Nav>
-    </Navbar>
+    </div>
   );
 }
 
