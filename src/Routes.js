@@ -1,34 +1,21 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import ReligiousMinorities from "./Radar/ReligiousMinorities";
-import FullChart from "./Radar/FullChart";
-import DiversityAndInclusion from "./Radar/DiversityAndInclusion";
-import SocietyAndPrivilege from "./Radar/SocietyAndPrivilege";
-import ClimateInjustice from "./Radar/ClimateInjustice";
-import EquitableTech from "./Radar/EquitableTech";
-import SexualOrientationIdentity from "./Radar/SexualOrientationIdentity";
-import RacialMinorities from "./Radar/RacialMinorities";
-import EconomicJustice from "./Radar/EconomicJustice";
+import HomePage from "./Pages/HomePage";
+import RadarPage from "./Pages/RadarPage";
+import PlanPage from "./Pages/PlanPage";
+import AdminPage from "./Pages/AdminPage";
+import ProfilePage from "./Pages/ProfilePage";
 
 const Routes = () => {
   return (
     <React.Fragment>
       <Switch>
-        <Route path="/full" component={FullChart} />
-        <Route
-          path="/diversityandinclusion"
-          component={DiversityAndInclusion}
-        />
-        <Route path="/religiousminorities" component={ReligiousMinorities} />
-        <Route path="/societyandprivilege" component={SocietyAndPrivilege} />
-        <Route path="/climateinjustice" component={ClimateInjustice} />
-        <Route path="/equitabletech" component={EquitableTech} />
-        <Route
-          path="/sexualorientationidentity"
-          component={SexualOrientationIdentity}
-        />
-        <Route path="/racialminorities" component={RacialMinorities} />
-        <Route path="/economicjustice" component={EconomicJustice} />
+        <Route path="/home" component={HomePage} />
+        <Route path="/radar" component={RadarPage} />
+        <Route path="/plan" component={PlanPage} />
+        <Route path="/admin" component={AdminPage} />
+        <Route path="/profile" component={ProfilePage} />
+        <Route path="/" component={HomePage} />
       </Switch>
     </React.Fragment>
   );

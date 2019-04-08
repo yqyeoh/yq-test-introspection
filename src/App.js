@@ -7,7 +7,6 @@ class App extends Component {
     return (
       <React.Fragment>
         <NavBar />
-        <h1>Introspection Radar (Singapore)</h1>
         <Routes />
       </React.Fragment>
     );

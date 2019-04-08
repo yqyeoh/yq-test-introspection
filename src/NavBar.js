@@ -1,35 +1,51 @@
 import React from "react";
+import { Navbar, Nav, NavItem } from "reactstrap";
 import { NavLink as Link } from "react-router-dom";
 
-const NavBar = () => {
+function NavBar() {
   return (
-    <React.Fragment>
-      <Link to="full">
-        <button>Full Chart</button>
-      </Link>
-      <Link to="diversityandinclusion">
-        <button>Diversity And Inclusion</button>
-      </Link>
-      <Link to="religiousminorities">
-        <button>Religious Minorities</button>
-      </Link>
-      <Link to="societyandprivilege">
-        <button>Society and Privilege</button>
-      </Link>
-      <Link to="climateinjustice">
-        <button>Climate Injustice</button>
-      </Link>
-      <Link to="equitabletech">
-        <button>Equitable Tech</button>
-      </Link>
-      <Link to="sexualorientationidentity">
-        <button>Sexual Orientation and Gender Identity</button>
-      </Link>
-      <Link to="economicjustice">
-        <button>Economic Justice</button>
-      </Link>
-    </React.Fragment>
+    <Navbar
+      style={{ backgroundColor: "#c3eee7" }}
+      expand="md"
+      className="pr-5 pl-5 ">
+      <Nav className="mr-auto d-flex flex-row" navbar>
+        <NavItem className="mr-5">
+          <Link to="/home">
+            <h3 className="text-muted">About Introspection</h3>
+          </Link>
+        </NavItem>
+        <NavItem className="mr-5">
+          <Link to="/radar">
+            <h3 className="text-muted">Introspection Radar</h3>
+          </Link>
+        </NavItem>
+        <NavItem className="mr-5">
+          <Link to="/plan">
+            <h3 className="text-muted">Action Plan</h3>
+          </Link>
+        </NavItem>
+        <NavItem className="mr-5">
+          <Link to="/admin">
+            <h3 className="text-muted">Admin Panel</h3>
+          </Link>
+        </NavItem>
+      </Nav>
+      <Nav className="ml-auto" navbar>
+        <NavItem>
+          <Link to="/profile">
+            <img
+              alt="avatar"
+              width="50px"
+              height="50px"
+              src="https://semantic-ui.com/images/avatar/large/steve.jpg"
+              className="rounded-circle"
+            />
+            <span className="text-muted"> Esther T.</span>
+          </Link>
+        </NavItem>
+      </Nav>
+    </Navbar>
   );
-};
+}
 
 export default NavBar;
