@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Plot from "react-plotly.js";
-import { findOne, findAllExcept } from "./static/info";
+import { findOne, findAllExcept } from "../static/info";
 import _ from "lodash";
 
 class Scatter extends Component {
@@ -191,7 +191,7 @@ class Scatter extends Component {
               layer: "below",
               radialaxis: {
                 dragmode: false,
-                visible: this.state.isGridOn,
+                visible: false,
                 tickfont: {
                   size: 8
                 },
@@ -199,7 +199,7 @@ class Scatter extends Component {
               },
               angularaxis: {
                 dragmode: false,
-                visible: this.state.isGridOn,
+                visible: false,
                 tickfont: {
                   size: 8
                 }

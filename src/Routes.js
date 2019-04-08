@@ -1,14 +1,14 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import ReligiousMinorities from "./ReligiousMinorities";
-import FullChart from "./FullChart";
-import DiversityAndInclusion from "./DiversityAndInclusion";
-import SocietyAndPrivilege from "./SocietyAndPrivilege";
-import ClimateInjustice from "./ClimateInjustice";
-import EquitableTech from "./EquitableTech";
-import SexualOrientationIdentity from "./SexualOrientationIdentity";
-import RacialMinorities from "./RacialMinorities";
-import EconomicJustice from "./EconomicJustice";
+import ReligiousMinorities from "./Radar/ReligiousMinorities";
+import FullChart from "./Radar/FullChart";
+import DiversityAndInclusion from "./Radar/DiversityAndInclusion";
+import SocietyAndPrivilege from "./Radar/SocietyAndPrivilege";
+import ClimateInjustice from "./Radar/ClimateInjustice";
+import EquitableTech from "./Radar/EquitableTech";
+import SexualOrientationIdentity from "./Radar/SexualOrientationIdentity";
+import RacialMinorities from "./Radar/RacialMinorities";
+import EconomicJustice from "./Radar/EconomicJustice";
 
 const Routes = () => {
   return (
