@@ -8,22 +8,26 @@ function NavBar() {
       <Nav className="d-flex flex-row justify-content-around" navbar>
         <NavItem>
           <Link to="/home">
-            <h4 className="text-muted">About Introspection</h4>
+            <h4 className="text-muted font-weight-bolder">
+              About Introspection
+            </h4>
           </Link>
         </NavItem>
         <NavItem>
           <Link to="/radar">
-            <h4 className="text-muted">Introspection Radar</h4>
+            <h4 className="text-muted font-weight-bolder">
+              Introspection Radar
+            </h4>
           </Link>
         </NavItem>
         <NavItem>
           <Link to="/plan">
-            <h4 className="text-muted">Action Plan</h4>
+            <h4 className="text-muted font-weight-bolder">Action Plan</h4>
           </Link>
         </NavItem>
         <NavItem>
           <Link to="/admin">
-            <h4 className="text-muted">Admin Panel</h4>
+            <h4 className="text-muted font-weight-bolder">Admin Panel</h4>
           </Link>
         </NavItem>
         <NavItem>
@@ -35,7 +39,7 @@ function NavBar() {
               src="https://semantic-ui.com/images/avatar/large/steve.jpg"
               className="rounded-circle"
             />
-            <span className="text-muted"> Esther T.</span>
+            <span className="text-muted font-weight-bolder"> Esther T.</span>
           </Link>
         </NavItem>
       </Nav>

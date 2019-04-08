@@ -28,6 +28,7 @@ class Scatter extends Component {
       newTheta = [],
       newNames = [];
     findAllExcept(this.state.searchField).forEach(function(element) {
+      _.times(8, () => newNames.push(element.name));
       element.categories.forEach(function(element) {
         newRadius.push(
           element.level === 1
@@ -46,7 +47,6 @@ class Scatter extends Component {
             element.category.sector[1] - 10
           )
         );
-        newNames.push(element.name);
       });
     });
     this.setState({ radius: newRadius, theta: newTheta, names: newNames });
@@ -56,6 +56,7 @@ class Scatter extends Component {
       newTheta = [],
       newNames = [];
     findOne(this.state.searchField).forEach(function(element) {
+      _.times(8, () => newNames.push("You"));
       element.categories.forEach(function(element) {
         newRadius.push(
           element.level === 1
@@ -74,7 +75,6 @@ class Scatter extends Component {
             element.category.sector[1] - 10
           )
         );
-        newNames.push("You");
       });
     });
     this.setState({
@@ -96,30 +96,6 @@ class Scatter extends Component {
   render() {
     return (
       <React.Fragment>
-        <input type="button" value="toggle grid" onClick={this.toggleGrid} />
-        <div>
-          <span> Who are you? </span>
-          <input
-            type="button"
-            onClick={this.handleSearchField}
-            value="James Salisbury"
-          />
-          <input
-            type="button"
-            onClick={this.handleSearchField}
-            value="Anna Pavlova"
-          />
-          <input
-            type="button"
-            onClick={this.handleSearchField}
-            value="John Dory"
-          />
-          <input
-            type="button"
-            onClick={this.handleSearchField}
-            value="Nellie Melba"
-          />
-        </div>
         <Plot
           data={[
             {
@@ -135,10 +111,9 @@ class Scatter extends Component {
               mode: "markers",
 
               marker: {
-                symbol: "triangle-up-dot",
-                color: "rgb(138,43,226)",
-                size: 13,
-                opacity: 1
+                symbol: "circle",
+                color: "rgba(138,43,226, 0.5)",
+                size: 13
               },
               type: "scatterpolar",
               subplot: "polar"
@@ -156,10 +131,9 @@ class Scatter extends Component {
               mode: "markers",
 
               marker: {
-                symbol: "triangle-up-dot",
-                color: "rgb(50,200,50)",
-                size: 13,
-                opacity: 1
+                symbol: "circle",
+                color: "rgba(50,150,189, 0.5)",
+                size: 13
               },
               type: "scatterpolar",
               subplot: "polar"
@@ -168,8 +142,6 @@ class Scatter extends Component {
           layout={{
             paper_bgcolor: "rgba(0,0,0,0)",
             plot_bgcolor: "rgba(0,0,0,0)",
-            width: 800,
-            height: 800,
             images: [
               {
                 source: `img/${this.props.background}.png`,
@@ -206,6 +178,9 @@ class Scatter extends Component {
               }
             }
           }}
+          useResizeHandler={true}
+          style={{ width: 1000, height: 1000 }}
+          className="mx-auto"
         />
       </React.Fragment>
     );

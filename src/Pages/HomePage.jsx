@@ -1,11 +1,16 @@
 import React from "react";
+import { Container } from "reactstrap";
 import HPJumbotron from "./../HPJumbotron";
+import FullChart from "./../Radar/FullChart";
 
 function HomePage() {
   return (
-    <div>
+    <>
       <HPJumbotron />
-    </div>
+      <Container className="mx-auto" style={{ width: "100vw" }}>
+        <FullChart />
+      </Container>
+    </>
   );
 }
 
