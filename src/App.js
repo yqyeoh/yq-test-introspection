@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Routes from "./Routes";
-import NavBar from "./NavBar";
+import NavBar from "./components/NavBar/NavBar";
 
 class App extends Component {
   render() {
