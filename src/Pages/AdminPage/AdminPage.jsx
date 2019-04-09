@@ -1,0 +1,74 @@
+import { Container } from "reactstrap";
+import React, { Component } from "react";
+
+const isDev = process.env.NODE_ENV !== "production";
+const getUrl = isDev
+  ? "http://localhost:8080"
+  : "https://staging-introspection-api.herokuapp.com";
+
+export class AdminPage extends Component {
+  state = {
+    csv: []
+  };
+
+  handleSubmit = async e => {
+    e.preventDefault();
+    const formData = new FormData();
+    const { csv } = this.state;
+    formData.append("file", csv);
+    try {
+      const res = await fetch(`${getUrl}/upload`, {
+        method: "POST",
+        body: formData,
+        headers: { "Content-Type": "multipart/form-data" },
+        credentials: "include"
+      });
+      if (res.status !== 201) {
+        throw new Error("File type not valid");
+      } else {
+        alert("success");
+      }
+    } catch (error) {
+      alert("file not uploaded");
+      console.error(error);
+    }
+  };
+
+  handleChange = e => {
+    this.setState({
+      csv: e.target.files[0]
+    });
+  };
+
+  render() {
+    return (
+      <Container
+        className="mx-auto text-center mt-5"
+        style={{ width: "100vw" }}>
+        <h1 className="text-info font-weight-bolder">Admin Page</h1>
+        <h3>🗄 Upload CSV File</h3>
+        <form
+          action="upload"
+          method="post"
+          encType="multipart/form-data"
+          onSubmit={this.handleSubmit}>
+          <input
+            type="file"
+            ref={input => {
+              this.filesInput = input;
+            }}
+            name="file"
+            accept=".csv"
+            data-testid="uploader"
+            onChange={this.handleChange}
+          />
+          <button type="submit" data-testid="file-submit">
+            🚚💨 Send
+          </button>
+        </form>
+      </Container>
+    );
+  }
+}
+
+export default AdminPage;

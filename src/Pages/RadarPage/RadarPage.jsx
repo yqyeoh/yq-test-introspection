@@ -1,6 +1,6 @@
 import React from "react";
 
-import FullChart from "../Radar/FullChart";
+import FullChart from "../../Radar/FullChart";
 
 function RadarPage() {
   return (

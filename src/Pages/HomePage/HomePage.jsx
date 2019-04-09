@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "reactstrap";
-import HPJumbotron from "../components/HPJumbotron/HPJumbotron";
-import FullChart from "./../Radar/FullChart";
+import HPJumbotron from "../../components/HPJumbotron/HPJumbotron";
+import FullChart from "./../../Radar/FullChart";
 
 function HomePage() {
   return (
