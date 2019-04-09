@@ -1,10 +1,11 @@
 import "jest-dom/extend-expect";
 import "react-testing-library/cleanup-after-each";
+import { createMemoryHistory } from "history";
 import React from "react";
+import { BrowserRouter, Router } from "react-router-dom";
 import { render, fireEvent } from "react-testing-library";
 import NavBar from "./NavBar";
-import { BrowserRouter } from "react-router-dom";
-import HomePage from "../../Pages/HomePage/HomePage";
+import App from "./../../App";
 
 test("should render 5 links upon load", () => {
   const { getByText } = render(
@@ -20,13 +21,13 @@ test("should render 5 links upon load", () => {
   expect(getByText(/Esther T./i)).toBeInTheDocument();
 });
 
-xtest("should link to home page when name is clicked", () => {
+test("should link to home page when name is clicked", () => {
+  const history = createMemoryHistory({ initialEntries: ["/radar"] });
   const { getByTestId, getByText } = render(
-    <BrowserRouter>
-      <NavBar />
-    </BrowserRouter>
+    <Router history={history}>
+      <App />
+    </Router>
   );
-
   const homepageLink = getByTestId("homepage-link");
   fireEvent.click(homepageLink);
 
