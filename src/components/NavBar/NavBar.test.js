@@ -4,7 +4,7 @@ import React from "react";
 import { render, fireEvent } from "react-testing-library";
 import NavBar from "./NavBar";
 import { BrowserRouter } from "react-router-dom";
-import HomePage from "../../Pages/HomePage";
+import HomePage from "../../Pages/HomePage/HomePage";
 
 test("should render 5 links upon load", () => {
   const { getByText } = render(
