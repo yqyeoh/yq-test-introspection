@@ -2,6 +2,23 @@
   "name": "plotly",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "test:once": "react-scripts test --no-watch",
+    "eject": "react-scripts eject"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test:once",
+      "pre-push": "npm run test:once",
+      "post-merge": "npm install && npm run test:once"
+    }
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
   "dependencies": {
     "bootstrap": "^4.3.1",
     "lodash": "^4.17.11",
@@ -12,15 +29,6 @@
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
     "reactstrap": "^8.0.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": [
     ">0.2%",
