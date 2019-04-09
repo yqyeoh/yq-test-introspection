@@ -7,7 +7,7 @@ function NavBar() {
     <div style={{ backgroundColor: "#c3eee7" }} className="pt-4 pb-2">
       <Nav className="d-flex flex-row justify-content-around" navbar>
         <NavItem>
-          <Link to="/home">
+          <Link to="/home" data-testid="homepage-link">
             <h4 className="text-muted font-weight-bolder">
               About Introspection
             </h4>
