@@ -1,6 +1,8 @@
 import "jest-dom/extend-expect";
 import "react-testing-library/cleanup-after-each";
 import React from "react";
+import { Router } from "react-router-dom";
+import { createMemoryHistory } from "history";
 import { render, fireEvent } from "react-testing-library";
 import AdminPage from "./AdminPage";
 
@@ -16,7 +18,12 @@ describe("Admin Page", () => {
 
   describe("admin page", () => {
     test("renders choose file button and send button upon page load", () => {
-      const { getByText, getByTestId } = render(<AdminPage />);
+      const history = createMemoryHistory({ initialEntries: ["/"] });
+      const { getByText, getByTestId } = render(
+        <Router history={history}>
+          <AdminPage />
+        </Router>
+      );
       expect(getByText(/send/i)).toBeInTheDocument();
       expect(getByTestId(/uploader/i)).toHaveAttribute("type", "file");
     });
@@ -30,14 +37,14 @@ describe("Admin Page", () => {
         type: ".csv"
       });
       fireEvent.change(inputEl, { target: { files: [file] } });
-      // expect(getByTestId("form")).toEqual(`👍 Successfully uploaded file!`);
+      // expect(getByTestId("form")).toEqual(expect.Ob`👍 Successfully uploaded file!`);
       // expect(getByText("successfully uploaded")).toBeDefined();
       expect(container).toContainElement(getByTestId("form"));
       // expect(container).toContainElement(
       // getByText("Successfully uploaded file!")
       // );
       // expect(getByText(/Successfully uploaded file/i)).toBeInTheDocument();
-      // expect(fetch.mock.calls.length).toEqual(1);
+      // expect(fetch.mock.calls.length).toBe(1);
       // expect(fetch.mock.calls[0][0]).toEqual(`${getUrl}/upload`);
     });
   });
