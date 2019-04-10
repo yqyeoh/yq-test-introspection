@@ -15,18 +15,19 @@ export class AdminPage extends Component {
     e.preventDefault();
     const formData = new FormData();
     const { csv } = this.state;
+    console.log(csv);
     formData.append("file", csv);
     try {
       const res = await fetch(`${getUrl}/upload`, {
         method: "POST",
         body: formData,
-        headers: { "Content-Type": "multipart/form-data" },
         credentials: "include"
       });
-      const data = await res.json();
+      // const data = await res.json();
       if (res.status !== 201) {
         throw new Error("File type not valid");
       } else {
+        alert("upload successful");
         this.props.history.push("/");
       }
     } catch (error) {
