@@ -1,10 +1,17 @@
 import { Container } from "reactstrap";
 import React, { Component } from "react";
+import Alert from "react-s-alert";
 
 const isDev = process.env.NODE_ENV !== "production";
 const getUrl = isDev
   ? "http://localhost:7890"
-  : "https://staging-introspection-api.herokuapp.com";
+  : "https://auto-introspection-api.herokuapp.com";
+
+const alertOpts = {
+  effect: "genie",
+  position: "top-right",
+  timeout: 1500
+};
 
 export class AdminPage extends Component {
   state = {
@@ -15,7 +22,6 @@ export class AdminPage extends Component {
     e.preventDefault();
     const formData = new FormData();
     const { csv } = this.state;
-    console.log(csv);
     formData.append("file", csv);
     try {
       const res = await fetch(`${getUrl}/upload`, {
@@ -25,13 +31,15 @@ export class AdminPage extends Component {
       });
       // const data = await res.json();
       if (res.status !== 201) {
-        throw new Error("File type not valid");
+        Alert.warning("File upload failed, please try again", alertOpts);
       } else {
-        alert("upload successful");
-        this.props.history.push("/");
+        Alert.info("Upload successful👍  ", alertOpts);
+        window.setTimeout(() => {
+          this.props.history.push("/");
+        }, 1500);
       }
     } catch (error) {
-      alert("file not uploaded");
+      Alert.warning("File upload failed, please try again", alertOpts);
       console.error(error);
     }
   };

@@ -27,6 +27,7 @@
     "react-dom": "^16.8.6",
     "react-plotly.js": "^2.3.0",
     "react-router-dom": "^5.0.0",
+    "react-s-alert": "^1.4.1",
     "react-scripts": "2.1.8",
     "reactstrap": "^8.0.0"
   },

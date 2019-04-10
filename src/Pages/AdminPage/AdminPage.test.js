@@ -31,19 +31,13 @@ describe("Admin Page", () => {
     test("Should render successfully upload if file type is accepted", () => {
       fetch.mockResponseOnce(JSON.stringify(`👍 Successfully uploaded file!`));
 
-      const { getByTestId, getByText, container } = render(<AdminPage />);
+      const { getByTestId, container } = render(<AdminPage />);
       const inputEl = getByTestId("file-submit");
       const file = new File(["(⌐□_□)"], "chucknorris.csv", {
         type: ".csv"
       });
       fireEvent.change(inputEl, { target: { files: [file] } });
-      // expect(getByTestId("form")).toEqual(expect.Ob`👍 Successfully uploaded file!`);
-      // expect(getByText("successfully uploaded")).toBeDefined();
       expect(container).toContainElement(getByTestId("form"));
-      // expect(container).toContainElement(
-      // getByText("Successfully uploaded file!")
-      // );
-      // expect(getByText(/Successfully uploaded file/i)).toBeInTheDocument();
       // expect(fetch.mock.calls.length).toBe(1);
       // expect(fetch.mock.calls[0][0]).toEqual(`${getUrl}/upload`);
     });
