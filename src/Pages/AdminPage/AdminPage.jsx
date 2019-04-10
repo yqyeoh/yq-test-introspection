@@ -23,10 +23,11 @@ export class AdminPage extends Component {
         headers: { "Content-Type": "multipart/form-data" },
         credentials: "include"
       });
+      const data = await res.json();
       if (res.status !== 201) {
         throw new Error("File type not valid");
       } else {
-        alert("success");
+        this.props.history.push("/");
       }
     } catch (error) {
       alert("file not uploaded");
@@ -44,14 +45,17 @@ export class AdminPage extends Component {
     return (
       <Container
         className="mx-auto text-center mt-5"
-        style={{ width: "100vw" }}>
+        style={{ width: "100vw" }}
+      >
         <h1 className="text-info font-weight-bolder">Admin Page</h1>
         <h3>🗄 Upload CSV File</h3>
         <form
+          data-testid="form"
           action="upload"
           method="post"
           encType="multipart/form-data"
-          onSubmit={this.handleSubmit}>
+          onSubmit={this.handleSubmit}
+        >
           <input
             type="file"
             ref={input => {
