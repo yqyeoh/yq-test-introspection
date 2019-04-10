@@ -3,7 +3,7 @@ import React, { Component } from "react";
 
 const isDev = process.env.NODE_ENV !== "production";
 const getUrl = isDev
-  ? "http://localhost:8080"
+  ? "http://localhost:7890"
   : "https://staging-introspection-api.herokuapp.com";
 
 export class AdminPage extends Component {
