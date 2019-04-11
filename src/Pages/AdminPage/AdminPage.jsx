@@ -33,7 +33,7 @@ export class AdminPage extends Component {
       if (res.status !== 201) {
         Alert.warning("File upload failed, please try again", alertOpts);
       } else {
-        Alert.info("Upload successful👍  ", alertOpts);
+        Alert.info("Upload successful", alertOpts);
         window.setTimeout(() => {
           this.props.history.push("/");
         }, 1500);
@@ -76,7 +76,7 @@ export class AdminPage extends Component {
             onChange={this.handleChange}
           />
           <button type="submit" data-testid="file-submit">
-            🚚💨 Send
+            Send
           </button>
         </form>
       </Container>
