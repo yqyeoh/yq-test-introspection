@@ -23,6 +23,9 @@ jobs:
       - run: npm run build
 
   deploy-auto:
+    docker:
+      - image: buildpack-deps:trusty
+
     steps:
       - checkout
       - run:
@@ -40,6 +43,9 @@ jobs:
           command: curl --fail https://$NETLIFY_APP_NAME.netlify.com
 
   deploy-test:
+    docker:
+      - image: buildpack-deps:trusty
+
     steps:
       - checkout
       - run:
@@ -57,6 +63,8 @@ jobs:
           command: curl --fail https://$NETLIFY_APP_NAME.netlify.com
 
   deploy-staging:
+    docker:
+      - image: buildpack-deps:trusty
     steps:
       - checkout
       - run:
