@@ -28,9 +28,7 @@ jobs:
 
     steps:
       - checkout
-      - run:
-          name: Deploy auto environment to Netlify
-          command: npm run netlify:deploy:auto
+      - run: npm run netlify:deploy:auto
 
   smoke-test-auto:
     docker:
@@ -48,9 +46,7 @@ jobs:
 
     steps:
       - checkout
-      - run:
-          name: Deploy auto environment to Netlify
-          command: npm run netlify:deploy:test
+      - run: npm run netlify:deploy:test
 
   smoke-test-test:
     docker:
@@ -67,9 +63,7 @@ jobs:
       - image: buildpack-deps:trusty
     steps:
       - checkout
-      - run:
-          name: Deploy staging environment to Netlify
-          command: npm run netlify:deploy:staging
+      - run: npm run netlify:deploy:staging
 
   smoke-test-staging:
     docker:
