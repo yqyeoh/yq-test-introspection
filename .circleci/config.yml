@@ -3,9 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:10.15.3
-    working_directory: ~/repo
-    environment:
-      CI: "true"
+
     steps:
       - checkout
       - restore_cache:
@@ -22,68 +20,66 @@ jobs:
 
       - run: npm test
 
+      - run: npm run build
+
   deploy-auto:
     docker:
       - image: buildpack-deps:trusty
-    environment:
-      HEROKU_APP_NAME: "auto-introspection-app"
+
     steps:
       - checkout
       - run:
-          name: Deploy auto environment to Heroku
-          command: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+          name: Deploy auto environment to Netlify
+          command: npx netlify-cli deploy --prod --dir=build --site=$NETLIFY_AUTOENV_SITE_ID --auth=$NETLIFY_AUTH_TOKEN
 
   smoke-test-auto:
     docker:
       - image: buildpack-deps:trusty
     environment:
-      HEROKU_APP_NAME: "auto-introspection-app"
+      NETLIFY_APP_NAME: 'yq-auto-introspection-app'
     steps:
       - run:
           name: Smoke test for auto environment
-          command: curl --fail https://$HEROKU_APP_NAME.herokuapp.com
+          command: curl --fail https://$NETLIFY_APP_NAME.netlify.com
 
   deploy-test:
     docker:
       - image: buildpack-deps:trusty
-    environment:
-      HEROKU_APP_NAME: "test-introspection-app"
+
     steps:
       - checkout
       - run:
-          name: Deploy test environment to Heroku
-          command: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+          name: Deploy auto environment to Netlify
+          command: npx netlify-cli deploy --prod --dir=build --site=$NETLIFY_TESTENV_SITE_ID --auth=$NETLIFY_AUTH_TOKEN
 
   smoke-test-test:
     docker:
       - image: buildpack-deps:trusty
     environment:
-      HEROKU_APP_NAME: "test-introspection-app"
+      NETLIFY_APP_NAME: 'yq-test-introspection-app'
     steps:
       - run:
           name: Smoke test for test environment
-          command: curl --fail https://$HEROKU_APP_NAME.herokuapp.com
+          command: curl --fail https://$NETLIFY_APP_NAME.netlify.com
 
   deploy-staging:
     docker:
       - image: buildpack-deps:trusty
-    environment:
-      HEROKU_APP_NAME: "staging-introspection-app"
     steps:
       - checkout
       - run:
-          name: Deploy test environment to Heroku
-          command: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+          name: Deploy test environment to Netlify
+          command: npx netlify-cli deploy --prod --dir=build --site=$NETLIFY_STAGINGENV_SITE_ID --auth=$NETLIFY_AUTH_TOKEN
 
   smoke-test-staging:
     docker:
       - image: buildpack-deps:trusty
     environment:
-      HEROKU_APP_NAME: "staging-introspection-app"
+      NETLIFY_APP_NAME: 'yq-staging-introspection-app'
     steps:
       - run:
           name: Smoke test for staging environment
-          command: curl --fail https://$HEROKU_APP_NAME.herokuapp.com
+          command: curl --fail https://$NETLIFY_APP_NAME.netlify.com
 
 workflows:
   version: 2
