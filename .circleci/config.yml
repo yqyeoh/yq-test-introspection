@@ -23,27 +23,30 @@ jobs:
 
       - run: ls -la
 
-      - store_artifacts:
-          path: build
-          destination: /tmp/artifact
+      - run: mkdir -p /tmp/build
+
+      - run: cp -r build /tmp
 
       - persist_to_workspace:
-          root: /tmp/artifact
+          root: /tmp
           paths:
-            - build
+            - build/*
 
   deploy-auto:
     docker:
       - image: circleci/node:10.15.3
 
     steps:
+      - attach_workspace:
+        at: /tmp/build
+
       - run: pwd
 
       - run: ls -la
 
       - run:
           name: Deploy auto environment to Netlify
-          command: npx netlify-cli deploy -p --dir=/tmp/artifact/build --site=$NETLIFY_AUTOENV_SITE_ID --auth=$NETLIFY_AUTH_TOKEN
+          command: npx netlify-cli deploy -p --dir=/tmp/build --site=$NETLIFY_AUTOENV_SITE_ID --auth=$NETLIFY_AUTH_TOKEN
 
   smoke-test-auto:
     docker:
