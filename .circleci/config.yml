@@ -24,7 +24,7 @@ jobs:
 
   deploy-auto:
     docker:
-      - image: buildpack-deps:trusty
+      - image: circleci/node:10.15.3
 
     steps:
       - checkout
@@ -42,45 +42,6 @@ jobs:
           name: Smoke test for auto environment
           command: curl --fail https://$NETLIFY_APP_NAME.netlify.com
 
-  deploy-test:
-    docker:
-      - image: buildpack-deps:trusty
-
-    steps:
-      - checkout
-      - run:
-          name: Deploy auto environment to Netlify
-          command: npm run netlify:deploy:test
-
-  smoke-test-test:
-    docker:
-      - image: buildpack-deps:trusty
-    environment:
-      NETLIFY_APP_NAME: 'yq-test-introspection-app'
-    steps:
-      - run:
-          name: Smoke test for test environment
-          command: curl --fail https://$NETLIFY_APP_NAME.netlify.com
-
-  deploy-staging:
-    docker:
-      - image: buildpack-deps:trusty
-    steps:
-      - checkout
-      - run:
-          name: Deploy staging environment to Netlify
-          command: npm run netlify:deploy:staging
-
-  smoke-test-staging:
-    docker:
-      - image: buildpack-deps:trusty
-    environment:
-      NETLIFY_APP_NAME: 'yq-staging-introspection-app'
-    steps:
-      - run:
-          name: Smoke test for staging environment
-          command: curl --fail https://$NETLIFY_APP_NAME.netlify.com
-
 workflows:
   version: 2
   build-and-deploy:
@@ -92,23 +53,3 @@ workflows:
       - smoke-test-auto:
           requires:
             - deploy-auto
-      - hold:
-          type: approval
-          requires:
-            - deploy-auto
-      - deploy-test:
-          requires:
-            - hold
-      - smoke-test-test:
-          requires:
-            - deploy-test
-      - hold-staging:
-          type: approval
-          requires:
-            - deploy-test
-      - deploy-staging:
-          requires:
-            - hold-staging
-      - smoke-test-staging:
-          requires:
-            - deploy-staging

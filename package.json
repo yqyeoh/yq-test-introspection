@@ -12,13 +12,6 @@
     "netlify:deploy:test": "netlify deploy --dir=./build -p --site=$NETLIFY_TESTENV_SITE_ID --auth=$NETLIFY_AUTH_TOKEN",
     "netlify:deploy:staging": "netlify deploy --dir=./build -p --site=$NETLIFY_STAGINGENV_SITE_ID --auth=$NETLIFY_AUTH_TOKEN"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run test:once",
-      "pre-push": "npm run test:once",
-      "post-merge": "npm install && npm run test:once"
-    }
-  },
   "eslintConfig": {
     "extends": "react-app"
   },
