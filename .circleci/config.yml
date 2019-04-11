@@ -26,7 +26,8 @@ jobs:
       - run: ls -la
 
       - store_artifacts:
-          path: /tmp/build
+          path: build
+          destination: /tmp
 
   deploy-auto:
     docker:
