@@ -31,11 +31,10 @@ jobs:
     docker:
       - image: circleci/node:10.15.3
 
-    - restore_cache:
-        keys:
-          - build-cache
-
     steps:
+      - restore_cache:
+          keys:
+            - build-cache
       - checkout
       - run:
           name: Deploy auto environment to Netlify
