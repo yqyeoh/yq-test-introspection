@@ -22,12 +22,18 @@ jobs:
 
       - run: npm run build
 
+      - save_cache:
+          paths:
+            - build
+          key: build-cache
+
   deploy-auto:
     docker:
       - image: circleci/node:10.15.3
 
-    dependencies:
-      - build
+    - restore_cache:
+        keys:
+          - build-cache
 
     steps:
       - checkout
