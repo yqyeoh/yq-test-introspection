@@ -50,7 +50,7 @@ jobs:
       - checkout
       - run:
           name: Deploy auto environment to Netlify
-          command: netlify:deploy:test
+          command: npm run netlify:deploy:test
 
   smoke-test-test:
     docker:
@@ -69,7 +69,7 @@ jobs:
       - checkout
       - run:
           name: Deploy staging environment to Netlify
-          command: netlify:deploy:staging
+          command: npm run netlify:deploy:staging
 
   smoke-test-staging:
     docker:
