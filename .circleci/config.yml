@@ -30,7 +30,7 @@ jobs:
       - checkout
       - run:
           name: Deploy auto environment to Netlify
-          command: npm run netlify:deploy:auto
+          command: npx netlify-cli deploy -p --dir=./build --site=$NETLIFY_AUTOENV_SITE_ID --auth=$NETLIFY_AUTH_TOKEN
 
   smoke-test-auto:
     docker:
