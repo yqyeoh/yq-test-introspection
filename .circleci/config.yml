@@ -30,7 +30,7 @@ jobs:
       - checkout
       - run:
           name: Deploy auto environment to Netlify
-          command: npx netlify-cli deploy --prod --dir=build --site=$NETLIFY_AUTOENV_SITE_ID --auth=$NETLIFY_AUTH_TOKEN
+          command: npm run netlify:deploy:auto
 
   smoke-test-auto:
     docker:
@@ -50,7 +50,7 @@ jobs:
       - checkout
       - run:
           name: Deploy auto environment to Netlify
-          command: npx netlify-cli deploy --prod --dir=build --site=$NETLIFY_TESTENV_SITE_ID --auth=$NETLIFY_AUTH_TOKEN
+          command: netlify:deploy:test
 
   smoke-test-test:
     docker:
@@ -68,8 +68,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Deploy test environment to Netlify
-          command: npx netlify-cli deploy --prod --dir=build --site=$NETLIFY_STAGINGENV_SITE_ID --auth=$NETLIFY_AUTH_TOKEN
+          name: Deploy staging environment to Netlify
+          command: netlify:deploy:staging
 
   smoke-test-staging:
     docker:
