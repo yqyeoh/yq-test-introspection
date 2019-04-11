@@ -19,13 +19,11 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: pwd
-
-      - run: ls -la
-
       - run: mkdir -p /tmp/build
 
       - run: cp -r build /tmp
+
+      - run: ls -la /tmp/build
 
       - persist_to_workspace:
           root: /tmp
@@ -39,6 +37,8 @@ jobs:
     steps:
       - attach_workspace:
           at: /tmp/build
+
+      - run: ls -la /tmp/build
 
       - run: pwd
 
