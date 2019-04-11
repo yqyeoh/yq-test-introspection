@@ -24,17 +24,15 @@ jobs:
       - run: npm run build
 
       - store_artifacts:
-        path: build
+          path: build
 
   deploy-auto:
     docker:
       - image: circleci/node:10.15.3
 
     steps:
-      - restore_cache:
-          keys:
-            - build-cache
       - checkout
+
       - run:
           name: Deploy auto environment to Netlify
           command: npx netlify-cli deploy -p --dir=./build --site=$NETLIFY_AUTOENV_SITE_ID --auth=$NETLIFY_AUTH_TOKEN
@@ -42,8 +40,10 @@ jobs:
   smoke-test-auto:
     docker:
       - image: buildpack-deps:trusty
+
     environment:
       NETLIFY_APP_NAME: 'yq-auto-introspection-app'
+
     steps:
       - run:
           name: Smoke test for auto environment
