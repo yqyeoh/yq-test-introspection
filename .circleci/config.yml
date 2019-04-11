@@ -19,15 +19,18 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: npm run build
-
       - run: pwd
 
       - run: ls -la
 
       - store_artifacts:
           path: build
-          destination: /tmp
+          destination: /tmp/artifact
+
+      - persist_to_workspace:
+          root: /tmp/artifact
+          paths:
+            - build
 
   deploy-auto:
     docker:
@@ -40,7 +43,7 @@ jobs:
 
       - run:
           name: Deploy auto environment to Netlify
-          command: npx netlify-cli deploy -p --dir=/tmp/build --site=$NETLIFY_AUTOENV_SITE_ID --auth=$NETLIFY_AUTH_TOKEN
+          command: npx netlify-cli deploy -p --dir=/tmp/artifact/build --site=$NETLIFY_AUTOENV_SITE_ID --auth=$NETLIFY_AUTH_TOKEN
 
   smoke-test-auto:
     docker:
