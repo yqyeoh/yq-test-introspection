@@ -23,12 +23,11 @@ jobs:
       - run: npm run build
 
   deploy-auto:
-    docker:
-      - image: buildpack-deps:trusty
-
     steps:
       - checkout
-      - run: npm run netlify:deploy:auto
+      - run:
+          name: Deploy auto environment to Netlify
+          command: npm run netlify:deploy:auto
 
   smoke-test-auto:
     docker:
@@ -41,12 +40,11 @@ jobs:
           command: curl --fail https://$NETLIFY_APP_NAME.netlify.com
 
   deploy-test:
-    docker:
-      - image: buildpack-deps:trusty
-
     steps:
       - checkout
-      - run: npm run netlify:deploy:test
+      - run:
+          name: Deploy auto environment to Netlify
+          command: npm run netlify:deploy:test
 
   smoke-test-test:
     docker:
@@ -59,11 +57,11 @@ jobs:
           command: curl --fail https://$NETLIFY_APP_NAME.netlify.com
 
   deploy-staging:
-    docker:
-      - image: buildpack-deps:trusty
     steps:
       - checkout
-      - run: npm run netlify:deploy:staging
+      - run:
+          name: Deploy staging environment to Netlify
+          command: npm run netlify:deploy:staging
 
   smoke-test-staging:
     docker:
